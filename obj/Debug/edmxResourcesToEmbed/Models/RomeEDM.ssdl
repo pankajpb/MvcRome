@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RomeDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="RomeDBModelStoreContainer">
+    <EntitySet Name="AccountCodes" EntityType="RomeDBModel.Store.AccountCodes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TaxAuthorityModels" EntityType="RomeDBModel.Store.TaxAuthorityModels" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="AccountCodes">
+    <Key>
+      <PropertyRef Name="acctCode" />
+    </Key>
+    <Property Name="acctCode" Type="int" Nullable="false" />
+    <Property Name="shortCode" Type="varchar" MaxLength="10" />
+    <Property Name="groups" Type="varchar" MaxLength="50" />
+    <Property Name="groupType" Type="varchar" MaxLength="50" />
+    <Property Name="descrp" Type="varchar(max)" />
+    <Property Name="shortDescrp" Type="varchar" MaxLength="50" />
+    <Property Name="ADBalanceAcct" Type="int" />
+    <Property Name="ADLaborOpt" Type="varchar" MaxLength="50" />
+    <Property Name="ADRate" Type="float" />
+    <Property Name="ADCostFact" Type="float" />
+    <Property Name="ADAutoCost" Type="bit" Nullable="false" />
+    <Property Name="ADBarcode" Type="float" />
+    <Property Name="ADAcctType" Type="varchar" MaxLength="10" />
+    <Property Name="SalesTA" Type="bit" Nullable="false" />
+    <Property Name="PST" Type="bit" Nullable="false" />
+    <Property Name="TaxAuth3" Type="bit" Nullable="false" />
+    <Property Name="CAClusterDebit" Type="varchar" MaxLength="50" />
+    <Property Name="CAClusterCredit" Type="varchar" MaxLength="50" />
+    <Property Name="CABilled" Type="int" />
+    <Property Name="TaxAuth4" Type="bit" Nullable="false" />
+    <Property Name="TaxAuth5" Type="bit" Nullable="false" />
+    <Property Name="QAClassName" Type="varchar" MaxLength="50" />
+    <Property Name="QACostInventory" Type="float" />
+    <Property Name="QACostCredit" Type="float" />
+    <Property Name="QACostDebit" Type="float" />
+    <Property Name="QASegementNo" Type="int" />
+    <Property Name="QAExportAcctCode" Type="bit" />
+    <Property Name="QAExportAllSeg" Type="bit" />
+    <Property Name="QAExportAcctCodeShopNo" Type="bit" />
+    <Property Name="ERAAcctType" Type="varchar" MaxLength="50" />
+    <Property Name="ERAGOGType" Type="varchar" MaxLength="50" />
+    <Property Name="ERAGOGCode" Type="varchar" MaxLength="50" />
+    <Property Name="clusterID" Type="int" />
+    <Property Name="shopID" Type="int" />
+    <Property Name="customerID" Type="int" />
+  </EntityType>
+  <EntityType Name="TaxAuthorityModels">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ShortName" Type="varchar" MaxLength="50" />
+    <Property Name="Account" Type="varchar" MaxLength="50" />
+    <Property Name="TR1Minimum" Type="float" />
+    <Property Name="TR1Maximum" Type="float" />
+    <Property Name="TR1FlatTaxFee" Type="float" />
+    <Property Name="TR1TaxRate" Type="float" />
+    <Property Name="TR1ApplyFeeRate" Type="int" />
+    <Property Name="TR2Minimum" Type="float" />
+    <Property Name="TR2Maximum" Type="float" />
+    <Property Name="TR2FlatTaxFee" Type="float" />
+    <Property Name="TR2TaxRate" Type="float" />
+    <Property Name="TR2ApplyFeeRate" Type="int" />
+    <Property Name="TR3Minimum" Type="float" />
+    <Property Name="TR3Maximum" Type="float" />
+    <Property Name="TR3FlatTaxFee" Type="float" />
+    <Property Name="TR3TaxRate" Type="float" />
+    <Property Name="TR3ApplyFeeRate" Type="int" />
+    <Property Name="TR4Minimum" Type="float" />
+    <Property Name="TR4Maximum" Type="float" />
+    <Property Name="TR4FlatTaxFee" Type="float" />
+    <Property Name="TR4TaxRate" Type="float" />
+    <Property Name="TR4ApplyFeeRate" Type="int" />
+    <Property Name="TR5Minimum" Type="float" />
+    <Property Name="TR5Maximum" Type="float" />
+    <Property Name="TR5FlatTaxFee" Type="float" />
+    <Property Name="TR5TaxRate" Type="float" />
+    <Property Name="TR5ApplyFeeRate" Type="int" />
+  </EntityType>
+</Schema>

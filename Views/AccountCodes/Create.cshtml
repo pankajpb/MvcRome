@@ -1,0 +1,597 @@
+﻿@model MvcRome.Models.AccountCode
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<link href="@Url.Content("~/Content/site.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery-1.8.2.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#tabs").tabs();
+    });
+</script>
+<script type="text/javascript">
+    function grpPartsTaxClick() {
+        $('#None').prop('disabled', false);
+        $('#GTLabor,#GTRefinishing,#GTSublet,#GTMiscellaneous').prop('disabled', true);
+        return true;
+    }
+    function grpLaborClick() {
+        $('#GTLabor,#GTRefinishing,#GTNone').prop('disabled', false);
+        $('#GTSublet,#GTMiscellaneous').prop('disabled', true);
+        return true;
+    }
+
+    function grpOtherClick() {
+        $('#GTSublet,#GTMiscellaneous,#GTNone').prop('disabled', false);
+        $('#GTLabor,#GTRefinishing').prop('disabled', true);
+        return true;
+    }
+    function ERANoneClick() {
+        $('#ERATextBox').prop('disabled', true);
+        return true;
+    }
+    function ERAClick() {
+        $('#ERATextBox').prop('disabled', false);
+        return true;
+    }
+
+    //$(document).ready(function () {
+    //    $("#up").on('click', function () {
+    //        $("#incdec input").val(parseInt($("#incdec input").val()) + 1);
+    //    });
+
+    //    $("#down").on('click', function ()
+    //    {
+    //        alert(parseInt($("#incdec input").val()));
+    //        if (parseInt($("#incdec input").val() < 1 ))
+    //        {
+    //            alert("in if");
+    //            return true;
+    //        }
+    //        else
+    //        {
+    //            $("#incdec input").val(parseInt($("#incdec input").val()) - 1);
+    //        }
+    //    });
+
+    //});
+</script>
+@using (Html.BeginForm("Create", "AccountCodes", new { ReturnUrl = ViewBag.ReturnUrl },FormMethod.Post, new { @class = "bootstrap-frm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Account</legend>
+        <br />
+
+@*        <div id="incdec">
+    <input type="text" value="0" />
+    <img src="up_arrow.jpeg" id="up" />
+    <img src="down_arrow.jpeg" id="down" />
+</div>*@
+       <table>
+           <tr>
+               <td> 
+                    @Html.LabelFor(model => model.acctCode)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.acctCode)
+                </td>
+                
+                <td>
+                    @Html.LabelFor(model => model.shortCode)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.shortCode, new { style = "width:50px" })
+                </td>
+               <td>@Html.ValidationMessageFor(model => model.shortCode)</td>
+         </tr>
+         <tr>
+                <td>&nbsp;</td> 
+                <td>@Html.ValidationMessageFor(model => model.acctCode)</td>
+         </tr>
+    </table>
+
+
+        <fieldset>
+            <legend >Groups</legend>
+            <table>
+                <tr>
+                    <td>
+
+                        @Html.RadioButtonFor(model => model.groups, "Parts", new { id = "Parts", @onClick = "grpPartsTaxClick();", @style = "width:auto;background:none;border:none" })
+                        @Html.Label("Parts", "Parts", new { style = "padding-right:20px" })
+                        @Html.RadioButtonFor(model => model.groups, "Labor", new { id = "Labor", @onClick = "grpLaborClick();", @style = "width:auto;background:none;border:none" })
+                        @Html.Label("Labor", "Labor", new { style = "padding-right:20px" })
+                        @Html.RadioButtonFor(model => model.groups, "Tax", new { id = "Tax", @onClick = "grpPartsTaxClick();", @style = "width:auto;background:none;border:none" })
+                        @Html.Label("Tax", "Tax", new { style = "padding-right:20px" })
+                        @Html.RadioButtonFor(model => model.groups, "Other", new { @checked = "checked", id = "Other", @onClick = "grpOtherClick();", @style = "width:auto;background:none;border:none" })
+                        @Html.Label("Other", "Other", new { style = "padding-right:20px" })
+                        @Html.ValidationMessageFor(model => model.groups)
+                    </td>
+
+
+                </tr>
+            </table>      
+    
+        </fieldset>
+         <br />
+        <fieldset>
+            <legend >Group Type</legend>
+            <table>
+                <tr>
+                    <td>
+
+                        @Html.RadioButtonFor(model => model.groupType, "None", new { @checked = "checked", id = "GTNone", @style = "width:auto;background:none;border:none" })
+                        @Html.Label("GTNone", "None", new { style = "padding-right:20px;font-size:small" })
+                        @Html.RadioButtonFor(model => model.groupType, "Labor", new { id = "GTLabor", @disabled = true, @style = "width:auto;background:none;border:none" })
+                        @Html.Label("GTLabor", "Labor", new { style = "padding-right:20px;font-size:small" })
+                        @Html.RadioButtonFor(model => model.groupType, "Refinishing", new { id = "GTRefinishing", @disabled = true, @style = "width:auto;background:none;border:none" })
+                        @Html.Label("GTRefinishing", "Refinishing", new { style = "padding-right:20px;font-size:small" })
+                        @Html.RadioButtonFor(model => model.groupType, "Sublet", new { id = "GTSublet", @style = "width:auto;background:none;border:none" })
+                        @Html.Label("GTSublet", "Sublet", new { style = "padding-right:20px;font-size:small" })
+                        @Html.RadioButtonFor(model => model.groupType, "Miscellaneous", new { id = "GTMiscellaneous", @style = "width:auto;background:none;border:none" })
+                        @Html.Label("GTMiscellaneous", "Miscellaneous", new { style = "padding-right:20px;font-size:small" })
+
+                        @Html.ValidationMessageFor(model => model.groupType)
+                    </td>
+                </tr>
+            </table>   
+        </fieldset>
+
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.descrp)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.descrp)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.descrp)
+                </td>
+            </tr>
+            <tr>
+               <td>
+                    @Html.LabelFor(model => model.shortDescrp)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.shortDescrp)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.shortDescrp)
+                </td>
+            </tr>
+        </table>   
+        <div id="tabs">
+
+            <ul>
+                <li><a href="#tabs-1">Accounts Default</a></li>
+                <li><a href="#tabs-2">Cluster Account</a></li>
+                <li><a href="#tabs-3">Quick Books/Acc Pac</a></li>
+                <li><a href="#tabs-4">ERA Accounts</a></li>
+                <li><a href="#tabs-5">Schedule/Forecasting</a></li>
+            </ul>
+            <div id="tabs-1">
+                <table>
+                    <tr>
+
+                        <td style="white-space:nowrap">
+                            @Html.LabelFor(model => model.ADBalanceAcct)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.ADBalanceAcct)
+                        </td>
+                       
+                        <td  style="white-space:nowrap">
+                            @Html.LabelFor(model => model.ADLaborOpt)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(model => model.ADLaborOpt, new { style = "width:150px;" })
+                        </td>
+                       
+                    </tr>       
+                    
+                   
+                     
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ADRate)
+                        </td>
+                        <td colspan="3">
+                            @Html.EditorFor(model => model.ADRate)
+                        </td>
+                        
+                    </tr>
+                   
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ADCostFact)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.ADCostFact)
+                        </td>
+                        
+                        <td colspan="1">
+                            @Html.CheckBoxFor(model => model.ADAutoCost)
+                            @Html.LabelFor(model => model.ADAutoCost)
+                        </td>
+                        <td >
+                           
+                        </td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ADBarcode)
+                        </td>
+                        <td colspan="3">
+                            @Html.EditorFor(model => model.ADBarcode)
+                        </td>
+                       
+                    </tr>
+                </table><br /> 
+         <table> 
+             <tr>
+                 <td>
+                     <fieldset>
+                         <legend >Account Type</legend>
+                         <br />
+
+                         <table>
+                             <tr>
+                                 <td>
+                                     @Html.RadioButtonFor(model => model.ADAcctType, "Credit", new { @checked = "checked", id = "Credit", @style = "width:auto;background:none;border:none" })
+                                     @Html.Label("Credit", "Credit", new { style = "padding-right:20px;font-size:small" })
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <td>
+                                     @Html.RadioButtonFor(model => model.ADAcctType, "Debit", new { id = "Debit", @style = "width:auto;background:none;border:none" })
+                                     @Html.Label("Debit", "Debit", new { style = "padding-right:20px;font-size:small" })
+                                 </td>
+                             </tr>
+                         </table>
+                     </fieldset>
+                 </td>
+                 <td>&nbsp;</td>
+                 <td>
+                     <fieldset>
+                         <legend >Tax Flags</legend><br />
+                         <table>
+                             <tr>
+                                 <td>
+                                     @Html.CheckBoxFor(model => model.SalesTA)
+                                     @Html.LabelFor(model => model.SalesTA, new { style = "padding-right:20px;font-size:small" })
+                                </td>
+                                 <td>&nbsp;</td>
+                                 <td>
+                                     @Html.CheckBoxFor(model => model.TaxAuth3)
+                                     @Html.LabelFor(model => model.TaxAuth3, new { style = "padding-right:20px;font-size:small" })
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <td>
+                                     @Html.CheckBoxFor(model => model.PST)
+                                     @Html.LabelFor(model => model.PST, new { style = "padding-right:20px;font-size:small" })
+                                 </td>
+                                 <td>&nbsp;</td>
+                                 <td>           
+                                     @Html.CheckBoxFor(model => model.TaxAuth4)
+                                     @Html.LabelFor(model => model.TaxAuth4, new { style = "padding-right:20px;font-size:small" })
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <td>
+                                     @Html.CheckBoxFor(model => model.TaxAuth5)
+                                     @Html.LabelFor(model => model.TaxAuth5, new { style = "padding-right:20px;font-size:small" })
+                                 </td>
+                             </tr>
+                         </table>
+                     </fieldset>
+                 </td>
+             </tr>
+        </table>
+            </div>
+
+            <div id="tabs-2">
+                <fieldset>
+                    <legend>Cost Cluster Accounts</legend>
+                    <br />
+                    <div>
+                        @Html.LabelFor(model => model.CAClusterCredit)
+                        @Html.DropDownList("clusterAcct", "[Select]")
+                        @Html.ValidationMessageFor(model => model.CAClusterCredit)
+                    </div>
+                    <br />
+                    <div>
+                        @Html.LabelFor(model => model.CAClusterDebit)
+                        @Html.DropDownList("clusterAcct", "[Select]")
+                        @Html.ValidationMessageFor(model => model.CAClusterDebit)
+                    </div>
+                    <br />
+                </fieldset>
+                <fieldset>
+                    <legend>Income Cluster Accounts</legend>
+                    <br />
+                    @Html.LabelFor(model => model.CABilled)
+                   @Html.DropDownList("clusterAcct", "[Select]")
+                </fieldset>
+            </div>
+            <div id="tabs-3">
+                <fieldset>
+                    <legend>Quick Books</legend>
+                    <table>
+                        <tr>
+                            <td>
+                            @Html.LabelFor(model => model.QAClassName)
+                            </td>
+                            <td>
+                            @Html.EditorFor(model => model.QAClassName)
+                            </td>
+                            <td>
+                            @Html.ValidationMessageFor(model => model.QAClassName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            @Html.LabelFor(model => model.QACostInventory)
+                            </td>
+                            <td>
+                            @Html.EditorFor(model => model.QACostInventory)
+                            </td>
+                            <td>
+                            @Html.ValidationMessageFor(model => model.QACostInventory)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            @Html.LabelFor(model => model.QACostCredit)
+                            </td>
+                            <td>
+                            @Html.EditorFor(model => model.QACostCredit)
+                            </td>
+                            <td>
+                            @Html.ValidationMessageFor(model => model.QACostCredit)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            @Html.LabelFor(model => model.QACostDebit)
+                            </td>
+                            <td>
+                            @Html.EditorFor(model => model.QACostDebit)
+                            </td>
+                            <td>
+                            @Html.ValidationMessageFor(model => model.QACostDebit)
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <legend>AccPac</legend>
+                    <div>
+                        @Html.LabelFor(model => model.QASegementNo)
+                        @Html.EditorFor(model => model.QASegementNo)
+                        @Html.ValidationMessageFor(model => model.QASegementNo)
+                    </div>
+                    <br />
+                    <div>
+
+                        @Html.CheckBoxFor(model => model.QAExportAcctCode)
+                        @Html.LabelFor(model => model.QAExportAcctCode)
+
+                        @Html.CheckBoxFor(model => model.QAExportAllSeg)
+                        @Html.LabelFor(model => model.QAExportAllSeg)
+
+                        
+                        @Html.CheckBoxFor(model => model.QAExportAcctCodeShopNo)
+                        @Html.LabelFor(model => model.QAExportAcctCodeShopNo)
+                    </div>
+
+                </fieldset>
+            </div>
+            <div id="tabs-4">
+                <fieldset>
+                    <legend>Account Type</legend><br />
+                    <table>
+                        <tr>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAAcctType, "None", new { @checked = "checked", id = "ATNone", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ATNone", "None", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAAcctType, "Body", new { id = "ATBody", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ATBody", "Body", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAAcctType, "Paint", new { id = "ATPaint", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ATPaint", "Paint", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAAcctType, "Frame", new { id = "ATFrame", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ATFrame", "Frame", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAAcctType, "Mechanical", new { id = "ATMechanical", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ATMechanical", "Mechanical", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAAcctType, "Structural", new { id = "ATStructural", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ATStructual", "Structural", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAAcctType, "User 1", new { id = "ATUser1", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ATUser1", "User 1", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAAcctType, "User 2", new { id = "ATUser2", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ATUser2", "User 2", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAAcctType, "User 3", new { id = "ATUser3", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ATUser3", "User 3", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAAcctType, "User 4", new { id = "ATUser4", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ATUser4", "User 4", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAAcctType, "User 5", new { id = "ATUser5", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ATUser5", "User 5", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAAcctType, "User 6", new { id = "ATUser6", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ATUser6", "User 6", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                        </tr>
+                    </table>
+                    
+                </fieldset>
+                <fieldset>
+                    <legend>ERA GOG Type</legend><br />
+                    <table>
+                        <tr>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAGOGType, "None", new { @checked = "checked", id = "ERANone", @onClick = "ERANoneClick();", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ERANone", "None", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAGOGType, "Frieght", new { id = "ERAFrieght", @onClick = "ERAClick();", @class = "groupsRadio", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ERAFrieght", "Frieght", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAGOGType, "Gas/Oil/Grease", new { id = "ERAGas/Oil/Grease", @onClick = "ERAClick();", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ERAGas/Oil/Grease", "Gas/Oil/Grease", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAGOGType, "PaintMaterials", new { id = "ERAPaintMaterials", @onClick = "ERAClick();", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ERAPaintMaterials", "Paint Materials", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.ERAGOGType, "ShopSupplies", new { id = "ERAShopSupplies", @onClick = "ERAClick();", @style = "width:auto;background:none;border:none" })
+                                @Html.Label("ERAShopSupplies", "Shop Supplies", new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                @Html.LabelFor(model => model.ERAGOGCode)
+                                @Html.TextBoxFor(model => model.ERAGOGCode, new { id = "ERATextBox", @disabled = true })
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+            <div id="tabs-5">
+                <fieldset>
+                    <legend>Select One or More Tasks(Setup Up as Multiple Accounts in Forecasting)</legend><br />
+                    <table>
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(model => model.BLU_TEAR)
+                                @Html.LabelFor(model => model.BLU_TEAR, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            
+                            <td>
+                                @Html.CheckBoxFor(model => model.BUFF)
+                                @Html.LabelFor(model => model.BUFF, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(model => model.SUP_APRV)
+                                @Html.LabelFor(model => model.SUP_APRV, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            
+                            <td>
+                                @Html.CheckBoxFor(model => model.REASY)
+                                @Html.LabelFor(model => model.REASY, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(model => model.BODY)
+                                @Html.LabelFor(model => model.BODY, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            
+                            <td>
+                                @Html.CheckBoxFor(model => model.SUBLET)
+                                @Html.LabelFor(model => model.SUBLET, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(model => model.FRAME)
+                                @Html.LabelFor(model => model.FRAME, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            
+                            <td>
+                                @Html.CheckBoxFor(model => model.MNTBAL)
+                                @Html.LabelFor(model => model.MNTBAL, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(model => model.MECH)
+                                @Html.LabelFor(model => model.MECH, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            
+                            <td>
+                                @Html.CheckBoxFor(model => model.ALIGN)
+                                @Html.LabelFor(model => model.ALIGN, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(model => model.A_CUTIN)
+                                @Html.LabelFor(model => model.A_CUTIN, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            
+                            <td>
+                                @Html.CheckBoxFor(model => model.DETAIL)
+                                @Html.LabelFor(model => model.DETAIL, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(model => model.B_PREP)
+                                @Html.LabelFor(model => model.B_PREP, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                            
+                            <td>
+                                @Html.CheckBoxFor(model => model.Q_C)
+                                @Html.LabelFor(model => model.Q_C, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(model => model.C_PAINT)
+                                @Html.LabelFor(model => model.C_PAINT, new { style = "padding-right:20px;font-size:small" })
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+        </div>
+        
+       
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}

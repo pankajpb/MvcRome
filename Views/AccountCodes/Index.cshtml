@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MvcRome.Models.AccountCode>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/GridStyle.css")" rel="stylesheet" type="text/css" />
+
+<h2>Account Codes</h2>
+<div>    
+ @using (Html.BeginForm("Index", "AccountCodes", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "bootstrap-frm" }))
+ {
+
+     var grid = new WebGrid(Model,selectionFieldName:"SelectedRow",rowsPerPage:8);
+
+@*Grid with more advanced column customisation*@
+     <fieldset style="width: 650px; height: auto">
+         <legend>By Account</legend>
+         <div id="grid">
+             @grid.GetHtml(
+        tableStyle: "webgrid-table",
+        headerStyle: "webgrid-header",
+        footerStyle: "webgrid-footer",
+        alternatingRowStyle: "webgrid-alternating-row",
+        selectedRowStyle: "webgrid-selected-row",
+        rowStyle: "webgrid-row-style",
+        mode: WebGridPagerModes.All,
+        columns: grid.Columns(
+        grid.Column("acctCode", header: "Account"),
+        grid.Column("shortCode", header: "Short Code"),
+        grid.Column("descrp", header: "Description"),
+        grid.Column("", format: @<text>@Html.ActionLink("Change", "Create", new { @ID = item.acctCode },new { @class = "css_button" }) @Html.ActionLink("Delete", "Delete", new { @ID = item.acctCode},new { onclick = "return confirm('Are you sure you wish to delete this Record?');" ,@class = "css_button"} )</text>,canSort:false)
+            )
+            )
+             @*@Html.ActionLink("Insert", "Create", new { @ID=0})*@
+             <div style="text-align: right">
+
+                 <input type="button" value="Insert" name="back" onclick="@("location.href='" + Url.Action("Create", "AccountCodes") + "'")" />
+
+             </div>
+
+         </div>
+     </fieldset>
+ }
+     </div>

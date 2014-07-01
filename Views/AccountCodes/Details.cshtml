@@ -1,0 +1,365 @@
+﻿@model MvcRome.Models.AccountCode
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>AccountCode</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.acctCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.acctCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.shortCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.shortCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.groups)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.groups)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.groupType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.groupType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.descrp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.descrp)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.shortDescrp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.shortDescrp)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ADBalanceAcct)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADBalanceAcct)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ADLaborOpt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADLaborOpt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ADRate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADRate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ADCostFact)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADCostFact)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ADAutoCost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADAutoCost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ADBarcode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADBarcode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ADAcctType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADAcctType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SalesTA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SalesTA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PST)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PST)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TaxAuth3)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TaxAuth3)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CAClusterDebit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CAClusterDebit)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CAClusterCredit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CAClusterCredit)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CABilled)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CABilled)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TaxAuth4)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TaxAuth4)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TaxAuth5)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TaxAuth5)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QAClassName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QAClassName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QACostInventory)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QACostInventory)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QACostCredit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QACostCredit)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QACostDebit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QACostDebit)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QASegementNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QASegementNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QAExportAcctCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QAExportAcctCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QAExportAllSeg)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QAExportAllSeg)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QAExportAcctCodeShopNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QAExportAcctCodeShopNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ERAAcctType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ERAAcctType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ERAGOGType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ERAGOGType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ERAGOGCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ERAGOGCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ClusterAccount.description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClusterAccount.description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.shopID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.shopID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.customerID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.customerID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BLU_TEAR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BLU_TEAR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SUP_APRV)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SUP_APRV)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BODY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BODY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FRAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FRAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MECH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MECH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.A_CUTIN)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.A_CUTIN)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.B_PREP)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.B_PREP)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_PAINT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_PAINT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BUFF)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BUFF)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.REASY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.REASY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SUBLET)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SUBLET)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MNTBAL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MNTBAL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ALIGN)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ALIGN)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DETAIL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DETAIL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Q_C)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Q_C)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

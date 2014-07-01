@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RomeDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="RomeDBEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="AccountCodes" EntityType="RomeDBModel.AccountCode" />
+    <EntitySet Name="BillingProfiles" EntityType="RomeDBModel.BillingProfile" />
+    <EntitySet Name="BillingProfileAccCodes" EntityType="RomeDBModel.BillingProfileAccCode" />
+    <EntitySet Name="ClusterAccounts" EntityType="RomeDBModel.ClusterAccount" />
+    <EntitySet Name="sParams" EntityType="RomeDBModel.sParam" />
+    <EntitySet Name="TaxAuthorities" EntityType="RomeDBModel.TaxAuthority" />
+    <AssociationSet Name="FK_AccountCodes_ClusterAccount" Association="RomeDBModel.FK_AccountCodes_ClusterAccount">
+      <End Role="ClusterAccount" EntitySet="ClusterAccounts" />
+      <End Role="AccountCodes" EntitySet="AccountCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxAuthority_AccountCodes" Association="RomeDBModel.FK_TaxAuthority_AccountCodes">
+      <End Role="AccountCodes" EntitySet="AccountCodes" />
+      <End Role="TaxAuthority" EntitySet="TaxAuthorities" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AccountCode">
+    <Key>
+      <PropertyRef Name="acctCode" />
+    </Key>
+    <Property Name="acctCode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="shortCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="groups" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="groupType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="descrp" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="shortDescrp" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ADBalanceAcct" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ADLaborOpt" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ADRate" Type="Double" />
+    <Property Name="ADCostFact" Type="Double" />
+    <Property Name="ADAutoCost" Type="Boolean" Nullable="false" />
+    <Property Name="ADBarcode" Type="Double" />
+    <Property Name="ADAcctType" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="SalesTA" Type="Boolean" Nullable="false" />
+    <Property Name="PST" Type="Boolean" Nullable="false" />
+    <Property Name="TaxAuth3" Type="Boolean" Nullable="false" />
+    <Property Name="TaxAuth4" Type="Boolean" Nullable="false" />
+    <Property Name="TaxAuth5" Type="Boolean" Nullable="false" />
+    <Property Name="CAClusterDebit" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CAClusterCredit" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CABilled" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="QAClassName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="QACostInventory" Type="Double" />
+    <Property Name="QACostCredit" Type="Double" />
+    <Property Name="QACostDebit" Type="Double" />
+    <Property Name="QASegementNo" Type="Int32" />
+    <Property Name="QAExportAcctCode" Type="Boolean" Nullable="false" />
+    <Property Name="QAExportAllSeg" Type="Boolean" Nullable="false" />
+    <Property Name="QAExportAcctCodeShopNo" Type="Boolean" Nullable="false" />
+    <Property Name="ERAAcctType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ERAGOGType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ERAGOGCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="clusterAcct" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="shopID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="customerID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BLU_TEAR" Type="Boolean" Nullable="false" />
+    <Property Name="SUP_APRV" Type="Boolean" Nullable="false" />
+    <Property Name="BODY" Type="Boolean" Nullable="false" />
+    <Property Name="FRAME" Type="Boolean" Nullable="false" />
+    <Property Name="MECH" Type="Boolean" Nullable="false" />
+    <Property Name="A_CUTIN" Type="Boolean" Nullable="false" />
+    <Property Name="B_PREP" Type="Boolean" Nullable="false" />
+    <Property Name="C_PAINT" Type="Boolean" Nullable="false" />
+    <Property Name="BUFF" Type="Boolean" Nullable="false" />
+    <Property Name="REASY" Type="Boolean" Nullable="false" />
+    <Property Name="SUBLET" Type="Boolean" Nullable="false" />
+    <Property Name="MNTBAL" Type="Boolean" Nullable="false" />
+    <Property Name="ALIGN" Type="Boolean" Nullable="false" />
+    <Property Name="DETAIL" Type="Boolean" Nullable="false" />
+    <Property Name="Q_C" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ClusterAccount" Relationship="RomeDBModel.FK_AccountCodes_ClusterAccount" FromRole="AccountCodes" ToRole="ClusterAccount" />
+    <NavigationProperty Name="TaxAuthorities" Relationship="RomeDBModel.FK_TaxAuthority_AccountCodes" FromRole="AccountCodes" ToRole="TaxAuthority" />
+  </EntityType>
+  <EntityType Name="BillingProfile">
+    <Key>
+      <PropertyRef Name="profileID" />
+    </Key>
+    <Property Name="profileID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BillingProfileAccCode">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ln" Type="Int32" Nullable="false" />
+    <Property Name="profileID" Type="Int32" Nullable="false" />
+    <Property Name="acctCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="shortDescri" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="descri" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="rate" Type="Double" />
+    <Property Name="factor" Type="Double" />
+    <Property Name="conversion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="costProgress" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="tax1" Type="Boolean" Nullable="false" />
+    <Property Name="tax2" Type="Boolean" Nullable="false" />
+    <Property Name="tax3" Type="Boolean" Nullable="false" />
+    <Property Name="tax4" Type="Boolean" Nullable="false" />
+    <Property Name="tax5" Type="Boolean" Nullable="false" />
+    <Property Name="autoCost" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClusterAccount">
+    <Key>
+      <PropertyRef Name="clusterAcct" />
+    </Key>
+    <Property Name="clusterAcct" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="shortDescription" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ADPSaleVehicleInventory" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="UCSUnitCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UCSUnitCount" Type="Double" />
+    <Property Name="StatisticalCount" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AccountCodes" Relationship="RomeDBModel.FK_AccountCodes_ClusterAccount" FromRole="ClusterAccount" ToRole="AccountCodes" />
+  </EntityType>
+  <EntityType Name="sParam">
+    <Key>
+      <PropertyRef Name="sId" />
+    </Key>
+    <Property Name="sId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="sName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="sValue" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TaxAuthority">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ShortName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="acctCode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="TR1Minimum" Type="Double" />
+    <Property Name="TR1Maximum" Type="Double" />
+    <Property Name="TR1FlatTaxFee" Type="Double" />
+    <Property Name="TR1TaxRate" Type="Double" />
+    <Property Name="TR1ApplyFeeRate" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="TR2Minimum" Type="Double" />
+    <Property Name="TR2Maximum" Type="Double" />
+    <Property Name="TR2FlatTaxFee" Type="Double" />
+    <Property Name="TR2TaxRate" Type="Double" />
+    <Property Name="TR2ApplyFeeRate" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="TR3Minimum" Type="Double" />
+    <Property Name="TR3Maximum" Type="Double" />
+    <Property Name="TR3FlatTaxFee" Type="Double" />
+    <Property Name="TR3TaxRate" Type="Double" />
+    <Property Name="TR3ApplyFeeRate" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="TR4Minimum" Type="Double" />
+    <Property Name="TR4Maximum" Type="Double" />
+    <Property Name="TR4FlatTaxFee" Type="Double" />
+    <Property Name="TR4TaxRate" Type="Double" />
+    <Property Name="TR4ApplyFeeRate" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="TR5Minimum" Type="Double" />
+    <Property Name="TR5Maximum" Type="Double" />
+    <Property Name="TR5FlatTaxFee" Type="Double" />
+    <Property Name="TR5TaxRate" Type="Double" />
+    <Property Name="TR5ApplyFeeRate" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="AccountCode" Relationship="RomeDBModel.FK_TaxAuthority_AccountCodes" FromRole="TaxAuthority" ToRole="AccountCodes" />
+  </EntityType>
+  <Association Name="FK_AccountCodes_ClusterAccount">
+    <End Role="ClusterAccount" Type="RomeDBModel.ClusterAccount" Multiplicity="0..1" />
+    <End Role="AccountCodes" Type="RomeDBModel.AccountCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClusterAccount">
+        <PropertyRef Name="clusterAcct" />
+      </Principal>
+      <Dependent Role="AccountCodes">
+        <PropertyRef Name="clusterAcct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxAuthority_AccountCodes">
+    <End Role="AccountCodes" Type="RomeDBModel.AccountCode" Multiplicity="1" />
+    <End Role="TaxAuthority" Type="RomeDBModel.TaxAuthority" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountCodes">
+        <PropertyRef Name="acctCode" />
+      </Principal>
+      <Dependent Role="TaxAuthority">
+        <PropertyRef Name="acctCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

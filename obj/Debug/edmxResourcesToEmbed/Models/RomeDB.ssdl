@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RomeDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="RomeDBModelStoreContainer">
+    <EntitySet Name="AccountCodes" EntityType="RomeDBModel.Store.AccountCodes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BillingProfile" EntityType="RomeDBModel.Store.BillingProfile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BillingProfileAccCodes" EntityType="RomeDBModel.Store.BillingProfileAccCodes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClusterAccount" EntityType="RomeDBModel.Store.ClusterAccount" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sParam" EntityType="RomeDBModel.Store.sParam" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TaxAuthority" EntityType="RomeDBModel.Store.TaxAuthority" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_AccountCodes_ClusterAccount" Association="RomeDBModel.Store.FK_AccountCodes_ClusterAccount">
+      <End Role="ClusterAccount" EntitySet="ClusterAccount" />
+      <End Role="AccountCodes" EntitySet="AccountCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxAuthority_AccountCodes" Association="RomeDBModel.Store.FK_TaxAuthority_AccountCodes">
+      <End Role="AccountCodes" EntitySet="AccountCodes" />
+      <End Role="TaxAuthority" EntitySet="TaxAuthority" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AccountCodes">
+    <Key>
+      <PropertyRef Name="acctCode" />
+    </Key>
+    <Property Name="acctCode" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="shortCode" Type="varchar" MaxLength="10" />
+    <Property Name="groups" Type="varchar" MaxLength="50" />
+    <Property Name="groupType" Type="varchar" MaxLength="50" />
+    <Property Name="descrp" Type="varchar(max)" Nullable="false" />
+    <Property Name="shortDescrp" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ADBalanceAcct" Type="varchar" MaxLength="50" />
+    <Property Name="ADLaborOpt" Type="varchar" MaxLength="50" />
+    <Property Name="ADRate" Type="float" />
+    <Property Name="ADCostFact" Type="float" />
+    <Property Name="ADAutoCost" Type="bit" Nullable="false" />
+    <Property Name="ADBarcode" Type="float" />
+    <Property Name="ADAcctType" Type="varchar" MaxLength="10" />
+    <Property Name="SalesTA" Type="bit" Nullable="false" />
+    <Property Name="PST" Type="bit" Nullable="false" />
+    <Property Name="TaxAuth3" Type="bit" Nullable="false" />
+    <Property Name="TaxAuth4" Type="bit" Nullable="false" />
+    <Property Name="TaxAuth5" Type="bit" Nullable="false" />
+    <Property Name="CAClusterDebit" Type="varchar" MaxLength="50" />
+    <Property Name="CAClusterCredit" Type="varchar" MaxLength="50" />
+    <Property Name="CABilled" Type="varchar" MaxLength="50" />
+    <Property Name="QAClassName" Type="varchar" MaxLength="50" />
+    <Property Name="QACostInventory" Type="float" />
+    <Property Name="QACostCredit" Type="float" />
+    <Property Name="QACostDebit" Type="float" />
+    <Property Name="QASegementNo" Type="int" />
+    <Property Name="QAExportAcctCode" Type="bit" Nullable="false" />
+    <Property Name="QAExportAllSeg" Type="bit" Nullable="false" />
+    <Property Name="QAExportAcctCodeShopNo" Type="bit" Nullable="false" />
+    <Property Name="ERAAcctType" Type="varchar" MaxLength="50" />
+    <Property Name="ERAGOGType" Type="varchar" MaxLength="50" />
+    <Property Name="ERAGOGCode" Type="varchar" MaxLength="50" />
+    <Property Name="clusterAcct" Type="varchar" MaxLength="50" />
+    <Property Name="shopID" Type="varchar" MaxLength="50" />
+    <Property Name="customerID" Type="varchar" MaxLength="50" />
+    <Property Name="BLU_TEAR" Type="bit" Nullable="false" />
+    <Property Name="SUP_APRV" Type="bit" Nullable="false" />
+    <Property Name="BODY" Type="bit" Nullable="false" />
+    <Property Name="FRAME" Type="bit" Nullable="false" />
+    <Property Name="MECH" Type="bit" Nullable="false" />
+    <Property Name="A_CUTIN" Type="bit" Nullable="false" />
+    <Property Name="B_PREP" Type="bit" Nullable="false" />
+    <Property Name="C_PAINT" Type="bit" Nullable="false" />
+    <Property Name="BUFF" Type="bit" Nullable="false" />
+    <Property Name="REASY" Type="bit" Nullable="false" />
+    <Property Name="SUBLET" Type="bit" Nullable="false" />
+    <Property Name="MNTBAL" Type="bit" Nullable="false" />
+    <Property Name="ALIGN" Type="bit" Nullable="false" />
+    <Property Name="DETAIL" Type="bit" Nullable="false" />
+    <Property Name="Q_C" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BillingProfile">
+    <Key>
+      <PropertyRef Name="profileID" />
+    </Key>
+    <Property Name="profileID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BillingProfileAccCodes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ln" Type="int" Nullable="false" />
+    <Property Name="profileID" Type="int" Nullable="false" />
+    <Property Name="acctCode" Type="varchar" MaxLength="50" />
+    <Property Name="shortDescri" Type="varchar" MaxLength="50" />
+    <Property Name="descri" Type="varchar(max)" />
+    <Property Name="rate" Type="float" />
+    <Property Name="factor" Type="float" />
+    <Property Name="conversion" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="costProgress" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="tax1" Type="bit" Nullable="false" />
+    <Property Name="tax2" Type="bit" Nullable="false" />
+    <Property Name="tax3" Type="bit" Nullable="false" />
+    <Property Name="tax4" Type="bit" Nullable="false" />
+    <Property Name="tax5" Type="bit" Nullable="false" />
+    <Property Name="autoCost" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClusterAccount">
+    <Key>
+      <PropertyRef Name="clusterAcct" />
+    </Key>
+    <Property Name="clusterAcct" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="description" Type="varchar(max)" Nullable="false" />
+    <Property Name="shortDescription" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ADPSaleVehicleInventory" Type="varchar(max)" />
+    <Property Name="UCSUnitCode" Type="varchar" MaxLength="50" />
+    <Property Name="UCSUnitCount" Type="float" />
+    <Property Name="StatisticalCount" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sParam">
+    <Key>
+      <PropertyRef Name="sId" />
+    </Key>
+    <Property Name="sId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="sName" Type="varchar" MaxLength="50" />
+    <Property Name="sValue" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TaxAuthority">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ShortName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="acctCode" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="TR1Minimum" Type="float" />
+    <Property Name="TR1Maximum" Type="float" />
+    <Property Name="TR1FlatTaxFee" Type="float" />
+    <Property Name="TR1TaxRate" Type="float" />
+    <Property Name="TR1ApplyFeeRate" Type="varchar(max)" />
+    <Property Name="TR2Minimum" Type="float" />
+    <Property Name="TR2Maximum" Type="float" />
+    <Property Name="TR2FlatTaxFee" Type="float" />
+    <Property Name="TR2TaxRate" Type="float" />
+    <Property Name="TR2ApplyFeeRate" Type="varchar(max)" />
+    <Property Name="TR3Minimum" Type="float" />
+    <Property Name="TR3Maximum" Type="float" />
+    <Property Name="TR3FlatTaxFee" Type="float" />
+    <Property Name="TR3TaxRate" Type="float" />
+    <Property Name="TR3ApplyFeeRate" Type="varchar(max)" />
+    <Property Name="TR4Minimum" Type="float" />
+    <Property Name="TR4Maximum" Type="float" />
+    <Property Name="TR4FlatTaxFee" Type="float" />
+    <Property Name="TR4TaxRate" Type="float" />
+    <Property Name="TR4ApplyFeeRate" Type="varchar(max)" />
+    <Property Name="TR5Minimum" Type="float" />
+    <Property Name="TR5Maximum" Type="float" />
+    <Property Name="TR5FlatTaxFee" Type="float" />
+    <Property Name="TR5TaxRate" Type="float" />
+    <Property Name="TR5ApplyFeeRate" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK_AccountCodes_ClusterAccount">
+    <End Role="ClusterAccount" Type="RomeDBModel.Store.ClusterAccount" Multiplicity="0..1" />
+    <End Role="AccountCodes" Type="RomeDBModel.Store.AccountCodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClusterAccount">
+        <PropertyRef Name="clusterAcct" />
+      </Principal>
+      <Dependent Role="AccountCodes">
+        <PropertyRef Name="clusterAcct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxAuthority_AccountCodes">
+    <End Role="AccountCodes" Type="RomeDBModel.Store.AccountCodes" Multiplicity="1" />
+    <End Role="TaxAuthority" Type="RomeDBModel.Store.TaxAuthority" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountCodes">
+        <PropertyRef Name="acctCode" />
+      </Principal>
+      <Dependent Role="TaxAuthority">
+        <PropertyRef Name="acctCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

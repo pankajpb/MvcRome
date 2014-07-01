@@ -1,0 +1,84 @@
+﻿@model MvcRome.Models.ClusterAccount
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ClusterAccount</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.clusterAcct)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.clusterAcct)
+            @Html.ValidationMessageFor(model => model.clusterAcct)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.description)
+            @Html.ValidationMessageFor(model => model.description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.shortDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.shortDescription)
+            @Html.ValidationMessageFor(model => model.shortDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ADPSaleVehicleInventory)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ADPSaleVehicleInventory)
+            @Html.ValidationMessageFor(model => model.ADPSaleVehicleInventory)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UCSUnitCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UCSUnitCode)
+            @Html.ValidationMessageFor(model => model.UCSUnitCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UCSUnitCount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UCSUnitCount)
+            @Html.ValidationMessageFor(model => model.UCSUnitCount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StatisticalCount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StatisticalCount)
+            @Html.ValidationMessageFor(model => model.StatisticalCount)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

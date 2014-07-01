@@ -1,0 +1,64 @@
+﻿@model MvcRome.Models.ClusterAccount
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ClusterAccount</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.clusterAcct)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.clusterAcct)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.shortDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.shortDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ADPSaleVehicleInventory)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADPSaleVehicleInventory)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UCSUnitCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UCSUnitCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UCSUnitCount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UCSUnitCount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StatisticalCount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StatisticalCount)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

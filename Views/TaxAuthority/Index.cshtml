@@ -1,0 +1,97 @@
+﻿@model IEnumerable<MvcRome.Models.TaxAuthority>
+
+@{
+    ViewBag.Title = "Tax Authority";
+}
+
+<h2>Tax Authority</h2>
+<link href="@Url.Content("~/Content/site.css")" rel="stylesheet" type="text/css" />
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<style type="text/css">
+    .edit-mode { }
+    .edit-user{}
+    .edit-user display-mode{}
+    .save-user edit-mode{}
+    .display-mode{}
+    .cancel-user{}
+    .webgrid-table
+    {
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        width: 650px;
+        display: table;
+        border-collapse: collapse;
+        border: solid #C5C5C5;
+        background-color: white;
+    }
+    .webgrid-table td, th
+    {
+        border: 1px solid #C5C5C5;
+        padding: 3px 7px 2px;
+    }
+    .webgrid-header, .webgrid-header a
+    {
+        background-color: #E3E3E3;
+        color: black;
+        text-align: left;
+        text-decoration:none;
+    }
+    .webgrid-footer
+    {
+    }
+    .webgrid-row-style
+    {
+        padding: 3px 7px 2px;
+    }
+    .webgrid-alternating-row
+    {
+        background-color: #F5F5F5;
+        padding: 3px 7px 2px;
+    }
+    .col1Width
+    {
+        width: 50px;
+    }
+    .col2Width
+    {
+        width: 200px;
+    }
+    .webgrid-selected-row 
+    {
+        background-color: #0094ff;
+    }
+</style>
+<div>    
+ @using (Html.BeginForm(new { @class = "bootstrap-frm" }))
+ {
+
+     var grid = new WebGrid(Model,selectionFieldName:"SelectedRow");
+
+@*Grid with more advanced column customisation*@
+<div id="grid" style=" padding:20px; ">
+@grid.GetHtml(
+    tableStyle: "webgrid-table",
+        headerStyle: "webgrid-header",
+        footerStyle: "webgrid-footer",
+        alternatingRowStyle: "webgrid-alternating-row",
+        selectedRowStyle: "webgrid-selected-row",
+        rowStyle: "webgrid-row-style",
+        mode: WebGridPagerModes.All,
+        columns: grid.Columns(
+        grid.Column("Name", format: @<text>@item.Name</text>,canSort:false),
+        grid.Column("Minimum", header: "Minimum", format: @<text>@item.TR1Minimum</text>,canSort:false),
+        grid.Column("Maximum",header:"Maximum",format:@<text>@item.TR1Maximum</text>,canSort:false),
+        grid.Column("FlatTextFee", header: "Flat Tax Fee", format: @<text>@item.TR1FlatTaxFee</text>,canSort:false),
+        grid.Column("TaxRate",header:"Tax Rate",format:@<text>@item.TR1TaxRate</text>,canSort:false),
+        grid.Column("",format:@<text>@Html.ActionLink("Change", "Edit", new  {@ID=item.ID })@Html.ActionLink("Delete","Delete", new  {@ID=item.ID })</text>,canSort:false)
+        
+    )
+    )
+    @Html.ActionLink("Insert", "Create")
+     
+</div>
+ }
+     </div>

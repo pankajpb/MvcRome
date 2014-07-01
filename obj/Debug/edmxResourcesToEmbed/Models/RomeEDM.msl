@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RomeDBModelStoreContainer" CdmEntityContainer="RomeDBEntities">
+    <EntitySetMapping Name="TaxAuthorityModels">
+      <EntityTypeMapping TypeName="RomeDBModel.TaxAuthorityModel">
+        <MappingFragment StoreEntitySet="TaxAuthorityModels">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="TR1Minimum" ColumnName="TR1Minimum" />
+          <ScalarProperty Name="TR1Maximum" ColumnName="TR1Maximum" />
+          <ScalarProperty Name="TR1FlatTaxFee" ColumnName="TR1FlatTaxFee" />
+          <ScalarProperty Name="TR1TaxRate" ColumnName="TR1TaxRate" />
+          <ScalarProperty Name="TR1ApplyFeeRate" ColumnName="TR1ApplyFeeRate" />
+          <ScalarProperty Name="TR2Minimum" ColumnName="TR2Minimum" />
+          <ScalarProperty Name="TR2Maximum" ColumnName="TR2Maximum" />
+          <ScalarProperty Name="TR2FlatTaxFee" ColumnName="TR2FlatTaxFee" />
+          <ScalarProperty Name="TR2TaxRate" ColumnName="TR2TaxRate" />
+          <ScalarProperty Name="TR2ApplyFeeRate" ColumnName="TR2ApplyFeeRate" />
+          <ScalarProperty Name="TR3Minimum" ColumnName="TR3Minimum" />
+          <ScalarProperty Name="TR3Maximum" ColumnName="TR3Maximum" />
+          <ScalarProperty Name="TR3FlatTaxFee" ColumnName="TR3FlatTaxFee" />
+          <ScalarProperty Name="TR3TaxRate" ColumnName="TR3TaxRate" />
+          <ScalarProperty Name="TR3ApplyFeeRate" ColumnName="TR3ApplyFeeRate" />
+          <ScalarProperty Name="TR4Minimum" ColumnName="TR4Minimum" />
+          <ScalarProperty Name="TR4Maximum" ColumnName="TR4Maximum" />
+          <ScalarProperty Name="TR4FlatTaxFee" ColumnName="TR4FlatTaxFee" />
+          <ScalarProperty Name="TR4TaxRate" ColumnName="TR4TaxRate" />
+          <ScalarProperty Name="TR4ApplyFeeRate" ColumnName="TR4ApplyFeeRate" />
+          <ScalarProperty Name="TR5Minimum" ColumnName="TR5Minimum" />
+          <ScalarProperty Name="TR5Maximum" ColumnName="TR5Maximum" />
+          <ScalarProperty Name="TR5FlatTaxFee" ColumnName="TR5FlatTaxFee" />
+          <ScalarProperty Name="TR5TaxRate" ColumnName="TR5TaxRate" />
+          <ScalarProperty Name="TR5ApplyFeeRate" ColumnName="TR5ApplyFeeRate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountCodes">
+      <EntityTypeMapping TypeName="RomeDBModel.AccountCode">
+        <MappingFragment StoreEntitySet="AccountCodes">
+          <ScalarProperty Name="customerID" ColumnName="customerID" />
+          <ScalarProperty Name="shopID" ColumnName="shopID" />
+          <ScalarProperty Name="clusterID" ColumnName="clusterID" />
+          <ScalarProperty Name="PST" ColumnName="PST" />
+          <ScalarProperty Name="acctCode" ColumnName="acctCode" />
+          <ScalarProperty Name="ERAGOGCode" ColumnName="ERAGOGCode" />
+          <ScalarProperty Name="ERAGOGType" ColumnName="ERAGOGType" />
+          <ScalarProperty Name="ERAAcctType" ColumnName="ERAAcctType" />
+          <ScalarProperty Name="QAExportAcctCodeShopNo" ColumnName="QAExportAcctCodeShopNo" />
+          <ScalarProperty Name="QAExportAllSeg" ColumnName="QAExportAllSeg" />
+          <ScalarProperty Name="QAExportAcctCode" ColumnName="QAExportAcctCode" />
+          <ScalarProperty Name="QASegementNo" ColumnName="QASegementNo" />
+          <ScalarProperty Name="QACostDebit" ColumnName="QACostDebit" />
+          <ScalarProperty Name="QACostCredit" ColumnName="QACostCredit" />
+          <ScalarProperty Name="QACostInventory" ColumnName="QACostInventory" />
+          <ScalarProperty Name="QAClassName" ColumnName="QAClassName" />
+          <ScalarProperty Name="TaxAuth5" ColumnName="TaxAuth5" />
+          <ScalarProperty Name="TaxAuth4" ColumnName="TaxAuth4" />
+          <ScalarProperty Name="CABilled" ColumnName="CABilled" />
+          <ScalarProperty Name="CAClusterCredit" ColumnName="CAClusterCredit" />
+          <ScalarProperty Name="CAClusterDebit" ColumnName="CAClusterDebit" />
+          <ScalarProperty Name="TaxAuth3" ColumnName="TaxAuth3" />
+          <ScalarProperty Name="SalesTA" ColumnName="SalesTA" />
+          <ScalarProperty Name="ADAcctType" ColumnName="ADAcctType" />
+          <ScalarProperty Name="ADBarcode" ColumnName="ADBarcode" />
+          <ScalarProperty Name="ADAutoCost" ColumnName="ADAutoCost" />
+          <ScalarProperty Name="ADCostFact" ColumnName="ADCostFact" />
+          <ScalarProperty Name="ADRate" ColumnName="ADRate" />
+          <ScalarProperty Name="ADLaborOpt" ColumnName="ADLaborOpt" />
+          <ScalarProperty Name="ADBalanceAcct" ColumnName="ADBalanceAcct" />
+          <ScalarProperty Name="shortDescrp" ColumnName="shortDescrp" />
+          <ScalarProperty Name="descrp" ColumnName="descrp" />
+          <ScalarProperty Name="groupType" ColumnName="groupType" />
+          <ScalarProperty Name="groups" ColumnName="groups" />
+          <ScalarProperty Name="shortCode" ColumnName="shortCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Rome SLX Web base application</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")  
+        @Styles.Render("~/Content/themes/base/css")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <div class="tp">
+                        <div class="lft">
+                                <div class="site-title img">
+                                    @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Home").ToHtmlString().Replace("[replacetext]", "<img height=\"76px\" width=\"72px\" src=\"/Images/RomeCloud.png\" ... />"))
+                                </div>
+                            </div>
+                            <div class="rht" style="vertical-align:bottom; ">
+                                
+                                    <ul id="nav">
+                                        <li><a href="#">File</a>
+                                            <ul>
+                                                <li><a href="#">Repair Order</a></li>
+                                                <li><a href="#">Estimating ></a>
+                                                    <ul>
+                                                        <li><a href="#">One</a></li>
+                                                        <li><a href="#">Two</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Calender</a></li>
+                                                <li><a href="#">Production</a></li>
+                                                <li><a href="#">Big Board</a></li>
+                                                <li><a href="#">Red Alert</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Reports</a>
+                                            <ul>
+                                                <li><a href="#">Management</a></li>
+                                                <li><a href="#">Accounting</a></li>
+                                    
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">Marketing</a>
+                                            <ul>
+                                                <li><a href="#">Retention</a></li>
+                                                <li><a href="#">Letter/Label Merge</a></li>
+                                                <li><a href="#">CSI Report</a></li>
+                                                <li><a href="#">Letters</a></li>
+                                                <li><a href="#">Customer Service</a></li>
+                                                <li><a href="#">Integra Link Report</a></li>
+                                            </ul> 
+                                        </li>
+                                        <li>
+                                            <a href="#">Accounting</a>
+                                            <ul>
+                                                <li><a href="#">Quick Books</a></li>
+                                                <li><a href="#">Acc Pac</a></li>
+                                                <li><a href="#">ADP DMS Interface</a></li>
+                                                <li><a href="#">ADP GL</a></li>
+                                                <li><a href="#">UCS Export File</a></li>
+                                                <li><a href="#">Dealer Track</a></li>
+                                                <li><a href="#">ACS Interface</a></li>
+                                                <li><a href="#">Rome Accounting</a></li>
+                                            </ul> 
+                                        </li>
+                                        <li>
+                                            <a href="#">Setup</a>
+                                            <ul>
+                                                <li><a href="#">Fleet Accounts</a></li>
+                                                <li><a href="#">Descriptions</a></li>
+                                                <li><a href="#">Insurance Companies</a></li>
+                                                <li><a href="#">Payroll &raquo;</a>
+                                                    <ul>
+                                                        <li><a href="#">Employees</a></li>
+                                                        <li><a href="#">Teams</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Vendors</a></li>
+                                                <li><a href="#">Account Codes &raquo;</a>
+                                                    <ul>
+                                                        <li>@Html.ActionLink("Account Codes", "Index", "AccountCodes")</li>
+                                                        <li>@Html.ActionLink("Cluster Account", "Index", "ClusterAccount")</li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Profiles &raquo;</a>
+                                                    <ul>
+                                                        <li><a href="#">Billing Profiles</a></li>
+                                                        <li><a href="#">Cluster Profiles</a></li>
+                                                        <li><a href="#">Damage Profiles &amp; Limits</a></li>
+                                                        <li><a href="#">Estimate Conversion TRT Search</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">RO Status Processing &raquo;</a>
+                                                    <ul class="third-level-menu">
+                                                        <li><a href="#">Car Process Status</a></li>
+                                                        <li><a href="#">Date Due Status</a></li>
+                                                        <li><a href="#">Part Return Reasons</a></li>
+                                                        <li><a href="#">Part Bin Descriptions</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>@Html.ActionLink("Taxing Authorities", "Index", "TaxAuthority")</li>
+                                                <li><a href="#">Installation Options</a></li>
+                                                <li><a href="#">Holidays</a></li>
+                                                <li><a href="#">Dialing Rules</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Help</a>
+                                            <ul>
+                                                <li><a href="#">Reference Guide</a></li>
+                                                <li><a href="#">Daily Use Guide</a></li>
+                                                <li><a href="#">Setup Guide</a></li>
+                                                <li><a href="#">Support</a></li>
+                                                <li><a href="#">About</a></li>
+                                    
+                                            </ul>
+                                        </li>
+                                    </ul>  
+                                    
+                                  </div>
+                            </div> 
+                   
+                    </div>
+                </div>
+
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - Rome App</p>
+                </div>
+            </div>
+        </footer>
+
+        @*@Scripts.Render("~/bundles/jquery")*@
+        @RenderSection("scripts", required: false)
+<script type="text/javascript" src="Scripts/jquery-1.9.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#nav li").hover(
+        function () {
+            $(this).children('ul').hide();
+            $(this).children('ul').slideDown('fast');
+        },
+        function () {
+            $('ul', this).slideUp('fast');
+        });
+    });
+</script>
+
+    </body>
+</html>
